@@ -17,6 +17,8 @@ def draw_menu(stdscr):
     curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLUE)
     curses.init_pair(4, curses.COLOR_CYAN, curses.COLOR_BLACK)
 
+    #stdscr.bkgd(' ', curses.color_pair(2) | curses.A_BOLD)
+    stdscr.bkgd(' ', curses.color_pair(3))
     host = "Hostname: localhost"
     port = "Port: 3306"
     user = "Username: archa"
@@ -31,7 +33,9 @@ def draw_menu(stdscr):
     start_x_title = int((w // 2) - (len(title) // 2) - len(title) % 2)
     start_y = int((h // 2) - 4)
     stdscr.attron(curses.A_BOLD)
+    stdscr.attron(curses.color_pair(2))
     stdscr.addstr(start_y, start_x_title, title)
+    stdscr.attroff(curses.color_pair(2))
     stdscr.attroff(curses.A_BOLD)
     stdscr.refresh()
 
